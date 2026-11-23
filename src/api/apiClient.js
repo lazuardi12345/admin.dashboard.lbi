@@ -1,7 +1,7 @@
 // src/api/apiClient.js
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1';
 export const STORAGE_BASE_URL = import.meta.env.VITE_STORAGE_BASE_URL || 'http://127.0.0.1:8000';
-export const PUBLIC_APP_URL = import.meta.env.VITE_PUBLIC_APP_URL || 'http://localhost:5173';
+export const PUBLIC_APP_URL = import.meta.env.VITE_PUBLIC_APP_URL || (import.meta.env.DEV ? 'http://localhost:5173' : '');
 
 export const getAuthToken = () => {
   return localStorage.getItem('lbi_admin_token') || localStorage.getItem('lbi_auth_token');

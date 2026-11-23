@@ -12,6 +12,13 @@ export default function AuthGuard({ children }) {
   const { token, loading } = useAuth();
 
   if (!token) {
+    if (!PUBLIC_APP_URL) {
+      return (
+        <div className="p-6 text-center text-sm text-red-700">
+          URL Landing belum dikonfigurasi. Atur VITE_PUBLIC_APP_URL pada environment deployment Admin Dashboard.
+        </div>
+      );
+    }
     window.location.replace(`${PUBLIC_APP_URL}/login`);
     return null;
   }
