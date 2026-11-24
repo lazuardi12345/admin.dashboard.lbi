@@ -1,5 +1,4 @@
 import { IconMenu2 } from '@tabler/icons-react';
-import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
@@ -21,9 +20,6 @@ export default function Header() {
         >
           <IconMenu2 size={21} />
         </button>
-        <div className="hidden min-w-0 md:block">
-          <LogoSection />
-        </div>
       </div>
       <div className="hidden min-w-0 flex-1 md:block">
         <SearchSection />

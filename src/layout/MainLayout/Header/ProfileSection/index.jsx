@@ -13,7 +13,7 @@ export default function ProfileSection() {
   const handleLogout = async () => {
     setOpen(false);
     await logout();
-    window.location.assign(`${PUBLIC_APP_URL}/login`);
+    window.location.replace(PUBLIC_APP_URL);
   };
 
   return (
