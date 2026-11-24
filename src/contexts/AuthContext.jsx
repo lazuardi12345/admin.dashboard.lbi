@@ -20,7 +20,7 @@ function getInitialToken() {
 
   if (handoffToken) {
     setAuthToken(handoffToken);
-    window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.hash}`);
+    window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.search}`);
     return handoffToken;
   }
 

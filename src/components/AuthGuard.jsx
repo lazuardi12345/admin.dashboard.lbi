@@ -1,6 +1,8 @@
 // src/components/AuthGuard.jsx
+import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { PUBLIC_APP_URL } from '../api/apiClient';
+import AdminEntrySplash from './AdminEntrySplash';
 
 // ==============================|| AUTH GUARD ||============================== //
 
@@ -10,6 +12,14 @@ import { PUBLIC_APP_URL } from '../api/apiClient';
  */
 export default function AuthGuard({ children }) {
   const { token, loading } = useAuth();
+  const [entranceElapsed, setEntranceElapsed] = useState(false);
+
+  useEffect(() => {
+    if (!token) return undefined;
+
+    const timer = window.setTimeout(() => setEntranceElapsed(true), 850);
+    return () => window.clearTimeout(timer);
+  }, [token]);
 
   if (!token) {
     if (!PUBLIC_APP_URL) {
@@ -23,7 +33,7 @@ export default function AuthGuard({ children }) {
     return null;
   }
 
-  if (loading) return null;
+  if (loading || !entranceElapsed) return <AdminEntrySplash />;
 
   return children;
 }
